@@ -27,7 +27,9 @@ type Store = {
 
 const StoreContext = createContext<Store | null>(null);
 
-const DEFAULT_FAVORITES = [CLINICS[0].id, CLINICS[1].id, CLINICS[4].id];
+const DEFAULT_FAVORITES = [0, 1, 4]
+  .map((i) => CLINICS[i]?.id)
+  .filter((id): id is string => Boolean(id));
 const KEY = "vitalis-store-v1";
 
 export function AppStoreProvider({ children }: { children: ReactNode }) {
